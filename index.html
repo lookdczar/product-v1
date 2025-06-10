@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学必优管理后台</title>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1890ff',
+            secondary: '#0050b3',
+            success: '#52c41a',
+            warning: '#faad14',
+            danger: '#ff4d4f',
+            neutral: {
+              100: '#f5f5f5',
+              200: '#e8e8e8',
+              300: '#d9d9d9',
+              400: '#bfbfbf',
+              500: '#8c8c8c',
+              600: '#595959',
+              700: '#434343',
+              800: '#262626',
+              900: '#1f1f1f'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="flex flex-col min-h-screen">
+  <!-- 顶部导航栏 -->
+  <div class="bg-white shadow-md fixed top-0 left-0 right-0 z-20 h-16">
+    <div class="container mx-auto h-full">
+      <div class="flex items-center justify-between h-full">
+        <!-- Logo区域 -->
+        <a href="index.html" class="flex items-center space-x-2">
+          <div class="bg-primary text-white h-8 w-8 rounded flex items-center justify-center">
+            <i class="fa fa-cube"></i>
+          </div>
+          <span class="text-lg font-medium text-neutral-800">学必优管理后台</span>
+        </a>
+        
+        <!-- 搜索栏 -->
+        <div class="hidden md:block flex-1 max-w-md mx-8">
+          <div class="relative">
+            <input type="text" placeholder="全局搜索..." 
+                   class="w-full pl-10 py-2 border border-neutral-300 rounded focus:border-primary focus:ring-1 focus:ring-primary">
+            <i class="fa fa-search absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400"></i>
+          </div>
+        </div>
+        
+        <!-- 用户信息和系统设置 -->
+        <div class="flex items-center space-x-4">
+          <button class="px-4 py-2 border border-neutral-300 rounded hover:border-primary hover:text-primary transition-colors">
+            <i class="fa fa-bell-o mr-1"></i>
+            <span class="hidden md:inline">通知</span>
+          </button>
+          <div class="flex items-center space-x-2 cursor-pointer">
+            <div class="h-8 w-8 rounded-full bg-neutral-200 flex items-center justify-center">
+              <i class="fa fa-user-o text-neutral-500"></i>
+            </div>
+            <span class="hidden md:inline text-sm font-medium">Admin</span>
+            <i class="fa fa-caret-down text-neutral-400 text-xs"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 左侧菜单栏 -->
+  <!-- 左侧菜单栏 -->
+  <div class="fixed left-0 top-16 bottom-0 w-64 bg-white shadow-md z-10 overflow-y-auto">
+    <nav class="py-4">
+      <!-- 模块导航菜单（一级） -->
+      <div class="mb-6">
+        <div class="px-6 py-2 text-xs uppercase text-neutral-500 font-medium tracking-wider">主导航</div>
+        
+        <div class="mb-2">
+          <div class="flex items-center justify-between px-6 py-3 cursor-pointer hover:bg-neutral-100 transition-colors"
+               onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('fa-caret-down'); this.querySelector('i').classList.toggle('fa-caret-right')">
+            <div class="flex items-center">
+              <i class="fa fa-users mr-2 text-neutral-600"></i>
+              <span class="text-neutral-700">员工管理模块</span>
+            </div>
+            <i class="fa fa-caret-down text-neutral-400 text-xs transition-transform"></i>
+          </div>
+          <div class="pl-8 mt-1">
+            <a href="员工管理模块/员工列表.html" class="block px-4 py-2 text-sm bg-primary/10 text-primary rounded">
+              <i class="fa fa-list-ul mr-2 text-xs"></i>
+              <span>员工列表</span>
+            </a>
+            <a href="员工管理模块/员工分类.html" class="block px-4 py-2 text-sm text-neutral-600 hover:text-primary">
+              <i class="fa fa-sitemap mr-2 text-xs"></i>
+              <span>员工分类</span>
+            </a>
+            <a href="员工管理模块/员工属性.html" class="block px-4 py-2 text-sm text-neutral-600 hover:text-primary">
+              <i class="fa fa-tags mr-2 text-xs"></i>
+              <span>员工属性</span>
+            </a>
+            <a href="员工管理模块/员工角色.html" class="block px-4 py-2 text-sm text-neutral-600 hover:text-primary">
+              <i class="fa fa-user-circle-o mr-2 text-xs"></i>
+              <span>员工角色</span>
+            </a>
+            <a href="员工管理模块/员工组.html" class="block px-4 py-2 text-sm text-neutral-600 hover:text-primary">
+              <i class="fa fa-users mr-2 text-xs"></i>
+              <span>员工组</span>
+            </a>
+            <a href="员工管理模块/回收站.html" class="block px-4 py-2 text-sm text-neutral-600 hover:text-primary">
+              <i class="fa fa-trash-o mr-2 text-xs"></i>
+              <span>回收站</span>
+            </a>
+            <a href="员工管理模块/操作日志.html" class="block px-4 py-2 text-sm text-neutral-600 hover:text-primary">
+              <i class="fa fa-history mr-2 text-xs"></i>
+              <span>操作日志</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="mb-2">
+          <div class="flex items-center justify-between px-6 py-3 cursor-pointer hover:bg-neutral-100 transition-colors"
+               onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('fa-caret-down'); this.querySelector('i').classList.toggle('fa-caret-right')">
+            <div class="flex items-center">
+              <i class="fa fa-user-o mr-2 text-neutral-600"></i>
+              <span class="text-neutral-700">用户管理模块</span>
+            </div>
+            <i class="fa fa-caret-right text-neutral-400 text-xs transition-transform"></i>
+          </div>
+          <div class="pl-8 mt-1 hidden">
+            <a href="用户管理模块/用户列表.html" class="block px-4 py-2 text-sm text-neutral-600 hover:text-primary">
+              <i class="fa fa-list-ul mr-2 text-xs"></i>
+              <span>用户列表</span>
+            </a>
+            <a href="用户管理模块/用户分组.html" class="block px-4 py-2 text-sm text-neutral-600 hover:text-primary">
+              <i class="fa fa-sitemap mr-2 text-xs"></i>
+              <span>用户分组</span>
+            </a>
+            <a href="用户管理模块/用户标签.html" class="block px-4 py-2 text-sm text-neutral-600 hover:text-primary">
+              <i class="fa fa-tags mr-2 text-xs"></i>
+              <span>用户标签</span>
+            </a>
+            <a href="用户管理模块/用户等级.html" class="block px-4 py-2 text-sm text-neutral-600 hover:text-primary">
+              <i class="fa fa-star-o mr-2 text-xs"></i>
+              <span>用户等级</span>
+            </a>
+            <a href="用户管理模块/实名认证.html" class="block px-4 py-2 text-sm text-neutral-600 hover:text-primary">
+              <i class="fa fa-id-card-o mr-2 text-xs"></i>
+              <span>实名认证</span>
+            </a>
+            <a href="用户管理模块/黑名单.html" class="block px-4 py-2 text-sm text-neutral-600 hover:text-primary">
+              <i class="fa fa-ban mr-2 text-xs"></i>
+              <span>黑名单</span>
+            </a>
+            <a href="用户管理模块/用户反馈.html" class="block px-4 py-2 text-sm text-neutral-600 hover:text-primary">
+              <i class="fa fa-comment-o mr-2 text-xs"></i>
+              <span>用户反馈</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="mb-2">
+          <div class="flex items-center justify-between px-6 py-3 cursor-pointer hover:bg-neutral-100 transition-colors"
+               onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('fa-caret-down'); this.querySelector('i').classList.toggle('fa-caret-right')">
+            <div class="flex items-center">
+              <i class="fa fa-cog mr-2 text-neutral-600"></i>
+              <span class="text-neutral-700">系统管理模块</span>
+            </div>
+            <i class="fa fa-caret-right text-neutral-400 text-xs transition-transform"></i>
+          </div>
+          <div class="pl-8 mt-1 hidden">
+            <a href="系统管理模块/模块管理.html" class="block px-4 py-2 text-sm text-neutral-600 hover:text-primary">
+              <i class="fa fa-th-large mr-2 text-xs"></i>
+              <span>模块管理</span>
+            </a>
+            <a href="系统管理模块/菜单管理.html" class="block px-4 py-2 text-sm text-neutral-600 hover:text-primary">
+              <i class="fa fa-bars mr-2 text-xs"></i>
+              <span>菜单管理</span>
+            </a>
+            <a href="系统管理模块/权限管理.html" class="block px-4 py-2 text-sm text-neutral-600 hover:text-primary">
+              <i class="fa fa-key mr-2 text-xs"></i>
+              <span>权限管理</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 功能菜单（二级） -->
+      <div>
+        <div class="px-6 py-2 text-xs uppercase text-neutral-500 font-medium tracking-wider">功能菜单</div>
+        <a href="数据统计.html" class="block px-6 py-3 text-neutral-700 hover:bg-neutral-100 transition-colors">
+          <i class="fa fa-bar-chart mr-2"></i>
+          <span>数据统计</span>
+        </a>
+        <a href="报表管理.html" class="block px-6 py-3 text-neutral-700 hover:bg-neutral-100 transition-colors">
+          <i class="fa fa-file-text-o mr-2"></i>
+          <span>报表管理</span>
+        </a>
+        <a href="系统设置.html" class="block px-6 py-3 text-neutral-700 hover:bg-neutral-100 transition-colors">
+          <i class="fa fa-cog mr-2"></i>
+          <span>系统设置</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- 主内容区 -->
+  <main class="ml-64 pt-16 min-h-screen bg-gray-100">
+    <div class="mx-8 mb-10"> 
+    <div class="container mx-auto px-6 py-6 ">
+      <!-- 面包屑导航 -->
+      <div class="ant-breadcrumb">
+        <span class="text-primary">首页</span>
+      </div>
+      
+      <!-- 页面标题和操作按钮 -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-6"></div>
+        <div>
+          <h1 class="text-2xl font-medium text-neutral-800">欢迎使用学必优管理后台</h1>
+          <p class="text-neutral-500 mt-1">您好，管理员！欢迎使用学必优管理后台系统。</p>
+        </div>
+      </div>
+      
+      <!-- 系统信息卡片 -->
+      <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+        <div class="mb-4">
+          <h2 class="text-lg font-medium text-neutral-800 mb-2">系统信息</h2>
+          <div class="text-neutral-700">
+            <p>当前系统版本：V1.0.0</p>
+            <p class="mt-2">上次登录时间：2023-06-01 10:30:45</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 快捷入口 -->
+      <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+        <h2 class="text-lg font-medium text-neutral-800 mb-4">快捷入口</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <a href="员工管理模块/员工列表.html" class="bg-neutral-100 p-4 rounded-lg flex items-center transition-colors hover:bg-primary/10">
+            <div class="h-8 w-8 rounded bg-primary/10 text-primary flex items-center justify-center mr-2">
+              <i class="fa fa-users"></i>
+            </div>
+            <div>
+              <div class="font-medium">员工管理</div>
+              <div class="text-xs text-neutral-500 mt-1">管理系统中的员工信息</div>
+            </div>
+          </a>
+          
+          <a href="用户管理模块/用户列表.html" class="bg-neutral-100 p-4 rounded-lg flex items-center transition-colors hover:bg-primary/10">
+            <div class="h-8 w-8 rounded bg-primary/10 text-primary flex items-center justify-center mr-2">
+              <i class="fa fa-user-o"></i>
+            </div>
+            <div>
+              <div class="font-medium">用户管理</div>
+              <div class="text-xs text-neutral-500 mt-1">管理系统中的用户信息</div>
+            </div>
+          </a>
+          
+          <a href="系统管理模块/权限管理.html" class="bg-neutral-100 p-4 rounded-lg flex items-center transition-colors hover:bg-primary/10">
+            <div class="h-8 w-8 rounded bg-primary/10 text-primary flex items-center justify-center mr-2">
+              <i class="fa fa-key"></i>
+            </div>
+            <div>
+              <div class="font-medium">权限管理</div>
+              <div class="text-xs text-neutral-500 mt-1">管理系统权限和角色</div>
+            </div>
+          </a>
+          
+          <a href="#" class="bg-neutral-100 p-4 rounded-lg flex items-center transition-colors hover:bg-primary/10">
+            <div class="h-8 w-8 rounded bg-primary/10 text-primary flex items-center justify-center mr-2">
+              <i class="fa fa-bar-chart"></i>
+            </div>
+            <div>
+              <div class="font-medium">数据统计</div>
+              <div class="text-xs text-neutral-500 mt-1">查看系统数据统计报表</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+      <!-- 系统公告 -->
+      <div class="bg-white rounded-lg shadow-sm p-4">
+        <h2 class="text-lg font-medium text-neutral-800 mb-4">系统公告</h2>
+        <div class="space-y-4">
+          <div class="border-b border-neutral-200 pb-4">
+            <div class="flex justify-between items-center mb-2">
+              <div class="font-medium">系统升级通知</div>
+              <div class="text-xs text-neutral-500">2023-05-30</div>
+            </div>
+            <div class="text-neutral-700">
+              尊敬的用户，系统将于2023年6月5日凌晨2:00-4:00进行升级维护，届时系统将暂停服务，请提前做好相关工作安排。
+            </div>
+          </div>
+          
+          <div class="pb-4">
+            <div class="flex justify-between items-center mb-2">
+              <div class="font-medium">新功能上线通知</div>
+              <div class="text-xs text-neutral-500">2023-05-15</div>
+            </div>
+            <div class="text-neutral-700">
+              员工管理模块新增批量导入功能，支持Excel文件导入，提高工作效率。
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // 菜单折叠/展开功能
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.ant-menu-submenu').forEach(submenu => {
+        const title = submenu.querySelector('.ant-menu-submenu-title');
+        const items = submenu.querySelector('.ant-menu-submenu-items');
+        const arrow = submenu.querySelector('.ant-menu-submenu-arrow');
+        
+        if (title && items && arrow) {
+          // 初始化菜单状态
+          const menuId = title.textContent.trim();
+          const isOpen = localStorage.getItem(`menu_${menuId}`) === 'true';
+          
+          if (isOpen) {
+            items.classList.remove('hidden');
+            submenu.classList.add('ant-menu-submenu-open');
+            arrow.classList.add('rotate-180');
+          } else {
+            items.classList.add('hidden');
+            submenu.classList.remove('ant-menu-submenu-open');
+            arrow.classList.remove('rotate-180');
+          }
+
+          // 点击事件
+          title.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const wasHidden = items.classList.contains('hidden');
+            
+            items.classList.toggle('hidden', !wasHidden);
+            submenu.classList.toggle('ant-menu-submenu-open', !wasHidden);
+            arrow.classList.toggle('rotate-180', !wasHidden);
+            
+            // 保存菜单状态
+            localStorage.setItem(`menu_${menuId}`, !wasHidden);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
